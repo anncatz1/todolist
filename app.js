@@ -40,6 +40,8 @@ const listSchema = {
 const List = mongoose.model("List", listSchema);
 
 app.get("/", function (req, res) {
+  res.send("it is working");
+
   const day = date.getDate();
 
   Item.find({}).then((data) => {
