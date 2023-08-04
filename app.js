@@ -12,7 +12,10 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/todolistDB");
+mongoose.connect(
+  "mongodb+srv://anniexu2001:2Uxeinna@cluster0.47bp6oz.mongodb.net/todolistDB"
+);
+// mongosh "mongodb+srv://cluster0.47bp6oz.mongodb.net/" --apiVersion 1 --username anniexu2001
 
 const itemsSchema = {
   name: String,
@@ -40,8 +43,6 @@ const listSchema = {
 const List = mongoose.model("List", listSchema);
 
 app.get("/", function (req, res) {
-  res.send("it is working");
-
   const day = date.getDate();
 
   Item.find({}).then((data) => {
